@@ -1,18 +1,18 @@
-import { useState } from "react";
+import React from "react";
+import Login from "./login";
+import { useSelector } from "react-redux";
 
-export default function Home() {
-    const [text, setText] = useState("");
-    function onChange(e) {
-        setText(e.target.value);
-    }
+function Home() {
+    const user = useSelector((state) => state.user.value);
     return (
         <div>
-            <h1>Todo</h1>
-            <form>
-                <input type="text" onChange={onChange} />
-                <button>Add</button>
-            </form>
-            <ul></ul>
+            <h1>Profile Page</h1>
+            <p> Name : {user.name}</p>
+            <p> Age : {user.age}</p>
+            <p> Email : {user.email}</p>
+            <Login />
         </div>
     );
 }
+
+export default Home;
